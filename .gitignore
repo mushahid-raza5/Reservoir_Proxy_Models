@@ -1,4 +1,46 @@
+# ── Trained model weights (host on HuggingFace / Google Drive instead) ──
+saved_models/
+
+# ── OPM / reservoir simulator binary outputs ────────────────────────────
+*.UNRST
+*.UNSMRY
+*.EGRID
+*.INIT
+*.DBG
+*.PRT
+*.RSM
+*.SMSPEC
+
+# ── Generated outputs ────────────────────────────────────────────────────
+prediction_plot.png
+rf_pred_vs_actual.png
+rf_feature_importance.png
+rf_residuals_by_group.png
+
+# ── Python ───────────────────────────────────────────────────────────────
 __pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# ── Jupyter ──────────────────────────────────────────────────────────────
 .ipynb_checkpoints/
-*.keras
-*.pkl
+*.ipynb_checkpoints
+
+# ── Virtual environments ─────────────────────────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+
+# ── OS / IDE ─────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp

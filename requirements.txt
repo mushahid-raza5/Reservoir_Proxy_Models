@@ -1,8 +1,8 @@
-pandas
-numpy
-matplotlib
-seaborn
-scikit-learn
-tensorflow
-joblib
-jupyter
+numpy>=1.24
+pandas>=1.5
+matplotlib>=3.6
+seaborn>=0.12
+scikit-learn>=1.2
+tensorflow>=2.12
+joblib>=1.2
+huggingface_hub>=0.20
