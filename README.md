@@ -78,10 +78,10 @@ This fetches all `.keras`, `.pkl`, `.npy`, and `.json` files from HuggingFace in
 ### 2b. Or retrain from scratch
 Run each notebook in order. Each saves trained models to `saved_models/`:
 ```
-ML2_FinalProject_Random_Forest_Baseline.ipynb   → saved_models/rf_*.pkl
-ML2_FinalProject_MLPModel.ipynb                 → saved_models/mlp_*.keras / .pkl
-ML2_FinalProject_Physics_Informed_NN.ipynb      → saved_models/pinn_*.keras / .pkl
-ML2_FinalProject_LSTM_Model.ipynb               → saved_models/enc_dec_lstm_*.keras / .pkl / .npy
+04_random_forest_baseline.ipynb   → saved_models/rf_*.pkl
+02_mlp_proxy.ipynb                → saved_models/mlp_*.keras / .pkl
+03_pinn_proxy.ipynb               → saved_models/pinn_*.keras / .pkl
+01_lstm_encoder_decoder.ipynb     → saved_models/enc_dec_lstm_*.keras / .pkl / .npy
 ```
 
 ### 3. Run inference — command line
@@ -105,25 +105,29 @@ Open `demo.ipynb`, edit the 6 parameters in Cell 1, and run all cells.
 ## Repository Structure
 
 ```
-├── ML2_FinalProject_LSTM_Model.ipynb           # Encoder-Decoder LSTM (full time-series)
-├── ML2_FinalProject_MLPModel.ipynb             # MLP scalar proxy
-├── ML2_FinalProject_Physics_Informed_NN.ipynb  # Physics-Informed NN
-├── ML2_FinalProject_Random_Forest_Baseline.ipynb # RF baseline
-├── demo.ipynb                                  # Interactive inference demo
-├── predict.py                                  # CLI inference script
-├── requirements.txt                            # Python dependencies
-├── saved_models/                               # Created when notebooks are run
-│   ├── enc_dec_lstm_reservoir_proxy.keras
-│   ├── scaler_static.pkl / scaler_time.pkl / scaler_y.pkl
-│   ├── lstm_avg_time_grid.npy
-│   ├── lstm_metadata.json
-│   ├── mlp_reservoir_proxy.keras
-│   ├── mlp_scaler_X.pkl / mlp_scaler_y.pkl
-│   ├── pinn_base_model.keras
-│   ├── pinn_scaler_X.pkl / pinn_scaler_y.pkl
-│   └── rf_final_fopt.pkl / rf_final_fpr.pkl / rf_final_fopr.pkl / rf_peak_fopr.pkl
-└── ml_dataset_scalar.csv                       # Dataset for MLP / PINN / RF
-    ml_dataset_timeseries_for_lstm.csv          # Dataset for LSTM
+├── 01_lstm_encoder_decoder.ipynb       # Encoder-Decoder LSTM (full time-series)
+├── 02_mlp_proxy.ipynb                  # MLP scalar proxy
+├── 03_pinn_proxy.ipynb                 # Physics-Informed NN
+├── 04_random_forest_baseline.ipynb     # Random Forest baseline
+├── demo.ipynb                          # Interactive inference demo
+├── predict.py                          # CLI inference script
+├── download_models.py                  # Fetch weights from HuggingFace
+├── requirements.txt                    # Python dependencies
+├── dataset_scalar.csv                  # Dataset for MLP / PINN / RF
+├── dataset_timeseries_lstm.csv         # Dataset for LSTM
+├── figures/                            # Training plots
+│   ├── rf_feature_importance.png
+│   ├── rf_pred_vs_actual.png
+│   └── rf_residuals_by_group.png
+└── saved_models/                       # Created after running notebooks
+    ├── enc_dec_lstm_reservoir_proxy.keras
+    ├── scaler_static.pkl / scaler_time.pkl / scaler_y.pkl
+    ├── lstm_avg_time_grid.npy
+    ├── mlp_reservoir_proxy.keras
+    ├── mlp_scaler_X.pkl / mlp_scaler_y.pkl
+    ├── pinn_base_model.keras
+    ├── pinn_scaler_X.pkl / pinn_scaler_y.pkl
+    └── rf_final_fopt.pkl / rf_final_fpr.pkl / rf_final_fopr.pkl / rf_peak_fopr.pkl
 ```
 
 ---
