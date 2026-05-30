@@ -115,7 +115,8 @@ Open `demo.ipynb`, edit the 6 parameters in Cell 1, and run all cells.
 ├── requirements.txt                    # Python dependencies
 ├── dataset_scalar.csv                  # Dataset for MLP / PINN / RF
 ├── dataset_timeseries_lstm.csv         # Dataset for LSTM
-├── figures/                            # Training plots
+├── figures/                            # Training and evaluation plots
+│   ├── lstm_pred_vs_actual.png
 │   ├── rf_feature_importance.png
 │   ├── rf_pred_vs_actual.png
 │   └── rf_residuals_by_group.png
@@ -153,7 +154,7 @@ Static reservoir parameters are compressed into a latent "scenario fingerprint" 
 Standard MSE causes cumulative oil (FOPT) to drift because it doesn't enforce that cumulative = ∫ rate. We apply a 1.5× loss weight to FOPT/FGPT to correct this — R²(FOPT) improved from 0.57 to 0.965.
 
 **3. Physics-Informed Neural Network**
-Two thermodynamic constraints are embedded directly in the training loop via a custom `GradientTape`:
+Two reservoir engineering constraints are embedded directly in the training loop via a custom `GradientTape`:
 - **Darcy's Law:** FPR > Producer BHP (flow cannot reverse)
 - **Injection ceiling:** FPR < Injector BHP limit
 
@@ -170,6 +171,10 @@ Violations are penalized with Huber loss (λ = 0.01), achieving zero physical vi
 | Reservoir Pressure (FPR) | 0.842 | 0.972 | 0.960 | 0.934 |
 | Gas Injection Rate (FGIR) | 0.947 | — | — | — |
 | Cumul. Gas Injection (FGIT) | 0.991 | — | — | — |
+
+### LSTM: Predicted vs Actual (3 held-out test scenarios)
+
+![LSTM Predicted vs Actual](figures/lstm_pred_vs_actual.png)
 
 ---
 
