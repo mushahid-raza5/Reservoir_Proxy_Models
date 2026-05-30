@@ -15,6 +15,12 @@ language:
 # AI-Driven Reservoir Performance Proxy
 ### Physics-Aware Deep Learning | ML2 Final Project — University of Chicago
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![HuggingFace Models](https://img.shields.io/badge/🤗%20HuggingFace-Models-orange)](https://huggingface.co/mushahid-raza/reservoir-proxy-models)
+[![Live Demo](https://img.shields.io/badge/🤗%20HF%20Space-Live%20Demo-blue)](https://huggingface.co/spaces/mushahid-raza/reservoir-proxy-demo)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mushahid-raza5/Reservoir_Proxy_Models/blob/main/demo.ipynb)
+
 > **Replace months of reservoir simulation with millisecond ML inference.**
 > Given 6 geological and operational parameters, our models predict 22-year oil production, cumulative output, and reservoir pressure with R² > 0.94 across all targets.
 
@@ -69,7 +75,11 @@ Reservoir simulators (like OPM Flow) solve complex fluid-flow equations over mil
 pip install -r requirements.txt
 ```
 
-### 2a. Download pre-trained weights (recommended)
+### 2a. Try the live demo (no installation needed)
+Run predictions directly in your browser — no code required:
+👉 **[huggingface.co/spaces/mushahid-raza/reservoir-proxy-demo](https://huggingface.co/spaces/mushahid-raza/reservoir-proxy-demo)**
+
+### 2b. Download pre-trained weights (recommended)
 Skip retraining entirely — download all saved models with one command:
 ```bash
 pip install huggingface_hub
@@ -77,7 +87,7 @@ python download_models.py
 ```
 This fetches all `.keras`, `.pkl`, `.npy`, and `.json` files from HuggingFace into `saved_models/`.
 
-### 2b. Or retrain from scratch
+### 2c. Or retrain from scratch
 Run each notebook in order. Each saves trained models to `saved_models/`:
 ```
 04_random_forest_baseline.ipynb   → saved_models/rf_*.pkl
@@ -174,6 +184,8 @@ Violations are penalized with Huber loss (λ = 0.01), achieving 93% physical con
 | Gas Injection Rate (FGIR) | 0.947 | — | — | — |
 | Cumul. Gas Injection (FGIT) | 0.991 | — | — | — |
 
+> **Note on LSTM FPR (R² = 0.842):** Reservoir pressure exhibits slower convergence in recurrent models due to pressure equilibration dynamics spanning the full 22-year horizon. For pressure-critical predictions, use the MLP (R² = 0.972) or PINN (R² = 0.960) scalar models instead.
+
 ### LSTM: Predicted vs Actual (3 held-out test scenarios)
 
 ![LSTM Predicted vs Actual](figures/lstm_pred_vs_actual.png)
@@ -190,6 +202,19 @@ Machine Learning 2 — University of Chicago, Spring 2026
 ## Citation
 
 If you use this work, please cite:
+
+**BibTeX:**
+```bibtex
+@misc{ali2026reservoir,
+  title     = {AI-Driven Reservoir Performance Proxy: Physics-Aware Deep Learning for Surrogate Reservoir Modeling},
+  author    = {Ali, Sabayna and Horas, Gabe and Klutzke, Morgan and Raza, Mushahid},
+  year      = {2026},
+  publisher = {University of Chicago},
+  note      = {ML2 Final Project. Models: \url{https://huggingface.co/mushahid-raza/reservoir-proxy-models}},
+}
+```
+
+**Plain text:**
 ```
 Ali, S., Horas, G., Klutzke, M., & Raza, M. (2026).
 AI-Driven Reservoir Performance Proxy: Physics-Aware Deep Learning
