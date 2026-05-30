@@ -32,10 +32,12 @@ Reservoir simulators (like OPM Flow) solve complex fluid-flow equations over mil
 
 | Model | Type | Predicts | Best R² |
 |-------|------|----------|---------|
-| **Encoder-Decoder LSTM** | Deep learning | Full 22-year time-series (8 variables) | 0.991 |
+| **Encoder-Decoder LSTM** | Deep learning | Full 22-year time-series (8 variables) | 0.991 † |
 | **MLP** | Deep learning | 4 final/peak scalar values | 0.996 |
 | **PINN** | Physics-informed NN | 4 scalars with Darcy's Law enforced | 0.996 |
 | **Random Forest** | Classical ML | 4 scalars (most interpretable) | 0.988 |
+
+† Best single-variable R² (FGIT — cumulative gas injection); average R² across all 8 output variables is 0.94.
 
 ### Input Features (6 parameters)
 
@@ -158,7 +160,7 @@ Two reservoir engineering constraints are embedded directly in the training loop
 - **Darcy's Law:** FPR > Producer BHP (flow cannot reverse)
 - **Injection ceiling:** FPR < Injector BHP limit
 
-Violations are penalized with Huber loss (λ = 0.01), achieving zero physical violations on the test set and R²(FOPT) = 0.996.
+Violations are penalized with Huber loss (λ = 0.01), achieving 95% physical constraint compliance (57/60 checks passed) on the test set and R²(FOPT) = 0.996.
 
 ---
 
