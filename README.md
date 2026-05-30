@@ -168,7 +168,7 @@ Violations are penalized with Huber loss (λ = 0.01), achieving 93% physical con
 
 | Target | LSTM R² | MLP R² | PINN R² | RF R² |
 |--------|---------|--------|---------|-------|
-| Oil Rate (FOPR) | 0.984 | 0.964 | 0.942 | 0.972 |
+| Oil Rate (FOPR) | 0.984 | 0.984 | 0.942 | 0.972 |
 | Cumul. Oil (FOPT) | 0.965 | 0.996 | 0.996 | 0.988 |
 | Reservoir Pressure (FPR) | 0.842 | 0.972 | 0.960 | 0.934 |
 | Gas Injection Rate (FGIR) | 0.947 | — | — | — |
