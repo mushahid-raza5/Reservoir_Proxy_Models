@@ -160,7 +160,7 @@ Two reservoir engineering constraints are embedded directly in the training loop
 - **Darcy's Law:** FPR > Producer BHP (flow cannot reverse)
 - **Injection ceiling:** FPR < Injector BHP limit
 
-Violations are penalized with Huber loss (λ = 0.01), achieving 95% physical constraint compliance (57/60 checks passed) on the test set and R²(FOPT) = 0.996.
+Violations are penalized with Huber loss (λ = 0.01), achieving 93% physical constraint compliance (56/60 checks passed) on the test set and R²(FOPT) = 0.996.
 
 ---
 
