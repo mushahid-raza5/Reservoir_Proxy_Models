@@ -193,6 +193,6 @@ If you use this work, please cite:
 ```
 Ali, S., Horas, G., Klutzke, M., & Raza, M. (2026).
 AI-Driven Reservoir Performance Proxy: Physics-Aware Deep Learning
-for Surrogate Reservoir Modeling. ML2 Final Project,
+for Surrogate Reservoir Modeling.
 University of Chicago.
 ```
